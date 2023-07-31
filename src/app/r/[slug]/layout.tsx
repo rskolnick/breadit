@@ -1,9 +1,10 @@
-import { Button } from '@/components/ui/Button';
+import { Button, buttonVariants } from '@/components/ui/Button';
 import { getAuthSession } from '@/lib/auth';
 import { db } from '@/lib/db';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import SubscribeLeaveToggle from '@/components/SubscribeLeaveToggle';
+import Link from 'next/link';
 
 const Layout = async ({
     children,
@@ -108,6 +109,15 @@ const Layout = async ({
                                     isSubscribed={isSubscribed}
                                 />
                             ) : null}
+                            <Link
+                                href={`/r/${subreddit.name}/submit`}
+                                className={buttonVariants({
+                                    variant: 'outline',
+                                    className: 'w-full mb-6',
+                                })}
+                            >
+                                Create Post
+                            </Link>
                         </dl>
                     </div>
                 </div>
